@@ -1,5 +1,16 @@
 # Simple example JAX-WS web service client
 
+## Development steps
+
+- Generate endpoint source code (proxies)
+- Code the client
+
+## Run the application
+
+```
+java -jar /tmp/hello-client-1.0-SNAPSHOT.jar
+```
+
 ## NPE
 
 ```
