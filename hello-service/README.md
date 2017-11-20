@@ -16,5 +16,7 @@ asadmin -u admin -W /tmp/glassfishpwd deploy /tmp/hello-service-0.0.1.war
 ## Test
 
 ```
-curl -SL http://localhost:8080/hello-service-0.0.1/HelloService?wsdl
+curl -SL "http://localhost:8080/hello-service-0.0.1/HelloService?wsdl"
+
+curl -SL "http://localhost:8080/hello-service-0.0.1/HelloService?xsd=1"
 ```
