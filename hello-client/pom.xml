@@ -34,9 +34,9 @@
                             <goal>wsimport</goal>
                         </goals>
                         <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>${project.basedir}/src/main/resources/HelloService.wsdl</wsdlFile>
-                            </wsdlFiles>
+                            <wsdlUrls>
+                                <wsdlUrl>http://localhost:18080/hello-service-0.0.1/HelloService?wsdl</wsdlUrl>
+                            </wsdlUrls>
                             <packageName>io.github.ouyi.jaxws.helloservice.endpoint</packageName>
                         </configuration>
                         <phase>generate-sources</phase>

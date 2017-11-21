@@ -5,6 +5,15 @@
 - Generate endpoint source code (proxies)
 - Code the client
 
+### WSDL locations
+
+- local
+- remote
+
+```
+[INFO] No WSDLs are found to process, Specify at least one of the following parameters: wsdlFiles, wsdlDirectory or wsdlUrls.
+```
+
 ## Run the application
 
 ```
