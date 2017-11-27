@@ -1,0 +1,28 @@
+group 'io.github.ouyi.jaxws'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+ext.generatedSources = "./build/generated-sources/wsimport"
+
+task wsimport(type:Exec) {
+    doFirst {
+        mkdir generatedSources
+    }
+    commandLine "wsimport", "-keep", "-s", generatedSources, "-encoding", "UTF-8", "-Xnocompile", "-B-XautoNameResolution", "-p", "io.github.ouyi.jaxws", "src/main/resources/HelloService.wsdl"
+}
+
+compileJava {
+    dependsOn wsimport
+    source generatedSources
+}
