@@ -2,6 +2,7 @@ group 'io.github.ouyi.jaxws'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'idea'
 
 sourceCompatibility = 1.8
 
@@ -13,16 +14,30 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-ext.generatedSources = "./build/generated-sources/wsimport"
+ext.wsimportOutputDir = "./build/generated-sources/wsimport"
+
+idea {
+    module {
+        generatedSourceDirs += file(wsimportOutputDir)
+    }
+}
 
 task wsimport(type:Exec) {
     doFirst {
-        mkdir generatedSources
+        mkdir wsimportOutputDir
     }
-    commandLine "wsimport", "-keep", "-s", generatedSources, "-encoding", "UTF-8", "-Xnocompile", "-B-XautoNameResolution", "-p", "io.github.ouyi.jaxws", "src/main/resources/HelloService.wsdl"
+    commandLine "wsimport", "-keep", "-s", wsimportOutputDir, "-encoding", "UTF-8", "-Xnocompile", "-B-XautoNameResolution", "-p", "io.github.ouyi.jaxws", "src/main/resources/HelloService.wsdl"
 }
 
 compileJava {
     dependsOn wsimport
-    source generatedSources
+    source wsimportOutputDir
+}
+
+jar {
+    manifest {
+        attributes(
+            "main-class": "io.github.ouyi.jaxws.HelloClient"
+        )
+    }
 }
