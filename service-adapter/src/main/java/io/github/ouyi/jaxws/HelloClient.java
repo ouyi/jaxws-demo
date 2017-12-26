@@ -9,7 +9,7 @@ import java.net.URL;
 public class HelloClient {
 
     public static void main(String[] args) throws MalformedURLException {
-        System.out.println(sayHello("world"));
+        System.out.println(sayHello("adapter"));
     }
 
     private static String sayHello(String name) throws MalformedURLException {
