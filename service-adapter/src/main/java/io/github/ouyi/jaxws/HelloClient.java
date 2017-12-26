@@ -8,12 +8,8 @@ import java.net.URL;
  */
 public class HelloClient {
 
-    public static void main(String[] args) throws MalformedURLException {
-        System.out.println(sayHello("adapter"));
-    }
-
-    private static String sayHello(String name) throws MalformedURLException {
-        URL wsdlLocation = new URL("http://localhost:8080/hello-service-0.0.1/HelloService?wsdl");
+    public static String sayHello(String name) throws MalformedURLException {
+        URL wsdlLocation = new URL("http://localhost:18080/hello-service-0.0.1/HelloService?wsdl");
         HelloService service = new HelloService(wsdlLocation);
         Hello port = service.getHelloPort();
         return port.sayHello(name);
