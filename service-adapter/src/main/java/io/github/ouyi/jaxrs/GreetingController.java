@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 
+    public static final String GREET_PATH = "/greeting";
     private final AtomicLong counter = new AtomicLong();
 
     @Autowired
     private HelloClient helloClient;
 
-    @RequestMapping("/greeting")
+    @RequestMapping(GREET_PATH)
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) throws MalformedURLException {
         return new Greeting(counter.incrementAndGet(), helloClient.sayHello(name));
     }
