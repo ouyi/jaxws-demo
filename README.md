@@ -1,1 +1,1 @@
-# JAX-WS web service tutorial
+# Java web services demo
